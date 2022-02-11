@@ -6,6 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { getLoansAsync } from "../../features/loanSlice";
 
 export default function LoanList() {
+  const Label = ({ type }) => {
+    return <label className={"widgetLgButton " + type}>{type}</label>;
+  };
   const loans = useSelector((state) => state.loans);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -48,6 +51,38 @@ export default function LoanList() {
       field: "date",
       headerName: "Disbursed Date",
       width: 170,
+    },
+
+    {
+      field: "overdue_amount",
+      headerName: "Amount Overdue",
+      width: 170,
+    },
+
+    {
+      field: "balance_rem",
+      headerName: "Balance",
+      width: 170,
+    },
+
+    {
+      field: "complete",
+      headerName: "Status",
+      width: 120,
+      renderCell: (params) => {
+        if (params.row.status === "True") {
+          return (
+            <>
+              <Label type="Cleared" />
+            </>
+          );
+        }
+        return (
+          <>
+            <Label type="Pending" />
+          </>
+        );
+      },
     },
   ];
 

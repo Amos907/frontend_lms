@@ -25,6 +25,7 @@ export const addLoanAsync = createAsyncThunk(
         payment_plan: payload.loan_plan,
         loan_amount: payload.amount,
         installment: payload.installment,
+        initial_installment: payload.installment,
       }),
     });
 

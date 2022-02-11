@@ -40,3 +40,12 @@
 .mholder {
   margin-left: auto;
 }
+
+.widgetLgButton.Cleared {
+  background-color: #e5faf2;
+  color: #3bb077;
+}
+.widgetLgButton.Pending {
+  background-color: #fff0f1;
+  color: #d95087;
+}
