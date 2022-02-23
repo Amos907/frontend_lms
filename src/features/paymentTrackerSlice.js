@@ -3,7 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const getOverdueAsync = createAsyncThunk(
   "paymentsTracker/overdue",
   async () => {
-    const resp = await fetch("http://localhost:8000/payments/overdue/");
+    const resp = await fetch(
+      "https://lms-api-testing.herokuapp.com/payments/overdue/"
+    );
     if (resp.ok) {
       const overdue = await resp.json();
       return { overdue };
@@ -14,7 +16,9 @@ export const getOverdueAsync = createAsyncThunk(
 export const getPaymentsTodayAsync = createAsyncThunk(
   "paymentsTracker/payments-today",
   async () => {
-    const resp = await fetch("http://localhost:8000/payments/payments-today/");
+    const resp = await fetch(
+      "https://lms-api-testing.herokuapp.com/payments/payments-today/"
+    );
     if (resp.ok) {
       const payments_today = await resp.json();
       return { payments_today };

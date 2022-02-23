@@ -3,7 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const getLoansAsync = createAsyncThunk(
   "loans/getLoansAsync",
   async () => {
-    const resp = await fetch("http://localhost:8000/all-loans/loans/");
+    const resp = await fetch(
+      "https://lms-api-testing.herokuapp.com/all-loans/loans/"
+    );
     if (resp.ok) {
       const loans = await resp.json();
       return { loans };
@@ -14,20 +16,23 @@ export const getLoansAsync = createAsyncThunk(
 export const addLoanAsync = createAsyncThunk(
   "loans/addLoanAsync",
   async (payload) => {
-    const resp = await fetch("http://localhost:8000/all-loans/loans/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user: payload.id_number,
-        full_name: payload.full_name,
-        payment_plan: payload.loan_plan,
-        loan_amount: payload.amount,
-        installment: payload.installment,
-        initial_installment: payload.installment,
-      }),
-    });
+    const resp = await fetch(
+      "https://lms-api-testing.herokuapp.com/all-loans/loans/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: payload.id_number,
+          full_name: payload.full_name,
+          payment_plan: payload.loan_plan,
+          loan_amount: payload.amount,
+          installment: payload.installment,
+          initial_installment: payload.installment,
+        }),
+      }
+    );
 
     if (resp.ok) {
       const loan = await resp.json();
@@ -39,7 +44,9 @@ export const addLoanAsync = createAsyncThunk(
 export const getLoanTypesAsync = createAsyncThunk(
   "loan-types/getLoanTypesAsync",
   async () => {
-    const resp = await fetch("http://localhost:8000/all-loans/loan-products/");
+    const resp = await fetch(
+      "https://lms-api-testing.herokuapp.com/all-loans/loan-products/"
+    );
     if (resp.ok) {
       const loan_types = await resp.json();
       return { loan_types };
@@ -50,20 +57,23 @@ export const getLoanTypesAsync = createAsyncThunk(
 export const addLoanTypeAsync = createAsyncThunk(
   "loan-types/addLoanTypeAsync",
   async (payload) => {
-    const resp = await fetch("http://localhost:8000/all-loans/loan-products/", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        loan_amount: payload.loan_amount,
-        four_weeks: payload.four_weeks,
-        five_weeks: payload.five_weeks,
-        seven_weeks: payload.seven_weeks,
-        eight_weeks: payload.eight_weeks,
-        ten_weeks: payload.ten_weeks,
-      }),
-    });
+    const resp = await fetch(
+      "https://lms-api-testing.herokuapp.com/all-loans/loan-products/",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          loan_amount: payload.loan_amount,
+          four_weeks: payload.four_weeks,
+          five_weeks: payload.five_weeks,
+          seven_weeks: payload.seven_weeks,
+          eight_weeks: payload.eight_weeks,
+          ten_weeks: payload.ten_weeks,
+        }),
+      }
+    );
 
     if (resp.ok) {
       const loan_type = await resp.json();
@@ -76,7 +86,8 @@ export const deleteLoanTypeAsync = createAsyncThunk(
   "loan-types/deleteLoanTypeAsync",
   async (payload) => {
     const res = await fetch(
-      "http://localhost:8000/all-loans/loan-products/delete/" + payload.id,
+      "https://lms-api-testing.herokuapp.com/all-loans/loan-products/delete/" +
+        payload.id,
       {
         mode: "no-cors",
         method: "DELETE",

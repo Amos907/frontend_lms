@@ -3,7 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const getC2BTransactionsAsync = createAsyncThunk(
   "payments/getC2BTransactionsAsync",
   async () => {
-    const resp = await fetch("http://localhost:8000/payments/c2b/");
+    const resp = await fetch(
+      "https://lms-api-testing.herokuapp.com/payments/c2b/"
+    );
     if (resp.ok) {
       const C2BTransactions = await resp.json();
       return { C2BTransactions };
@@ -14,18 +16,23 @@ export const getC2BTransactionsAsync = createAsyncThunk(
 export const addC2BTransactionsAsync = createAsyncThunk(
   "payments/addC2BTransactionsAsync",
   async (payload) => {
-    const res = await fetch("http://localhost:8000/payments/c2b/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        mpesa: payload.mpesa_code,
-        full_name: payload.full_name,
-        amount: payload.amount,
-        phone_number: payload.phone_number,
-      }),
-    });
+    const res = await fetch(
+      "https://lms-api-testing.herokuapp.com/payments/c2b/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          mpesa: payload.mpesa_code,
+          full_name: payload.full_name,
+          name: payload.name,
+          amount: payload.amount,
+          phone_number: payload.phone_number,
+          week: payload.week,
+        }),
+      }
+    );
 
     if (res.ok) {
       const C2BTransaction = await res.json();
@@ -37,7 +44,9 @@ export const addC2BTransactionsAsync = createAsyncThunk(
 export const getB2CTransactionsAsync = createAsyncThunk(
   "payments/getB2CTransactionsAsync",
   async () => {
-    const resp = await fetch("http://localhost:8000/payments/b2c/");
+    const resp = await fetch(
+      "https://lms-api-testing.herokuapp.com/payments/b2c/"
+    );
     if (resp.ok) {
       const B2CTransactions = await resp.json();
       return { B2CTransactions };
@@ -48,18 +57,21 @@ export const getB2CTransactionsAsync = createAsyncThunk(
 export const addB2CTransactionsAsync = createAsyncThunk(
   "payments/addB2CTransactionsAsync",
   async (payload) => {
-    const res = await fetch("http://localhost:8000/payments/b2c/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        mpesa: payload.mpesa_code,
-        full_name: payload.full_name,
-        amount: payload.amount,
-        phone_number: payload.phone_number,
-      }),
-    });
+    const res = await fetch(
+      "https://lms-api-testing.herokuapp.com/payments/b2c/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          mpesa: payload.mpesa_code,
+          full_name: payload.full_name,
+          amount: payload.amount,
+          phone_number: payload.phone_number,
+        }),
+      }
+    );
 
     if (res.ok) {
       const B2CTransaction = await res.json();

@@ -21,7 +21,7 @@ export default function Login() {
     console.log(password);
     if (email || password != null) {
       axios
-        .post("http://localhost:8000/api/auth/login/", {
+        .post("https://lms-api-testing.herokuapp.com/api/auth/login/", {
           email: email.trim(),
           password: password.trim(),
         })
@@ -41,7 +41,7 @@ export default function Login() {
           history.push("/");
         })
         .catch((err) => {
-          alert(err.response.data.detail.toString());
+          alert("Unable to Login. Check username and password and try again.");
         });
     } else {
       alert("Fill Missing Values!");

@@ -1,5 +1,5 @@
 .userList {
-  flex: 4;
+  width: 1000px;
   height: 550px;
   margin-top: 50px;
 }
@@ -62,4 +62,56 @@
 
 .mholder {
   margin-left: auto;
+}
+.sidebar {
+  flex: 1;
+  height: calc(150vh - 50px);
+  background-color: #108b9a;
+  position: sticky;
+  top: 50px;
+  margin-right: 10px;
+}
+
+.sidebarWrapper {
+  padding: 20px;
+  color: #555;
+}
+
+.sidebarMenu {
+  margin-bottom: 10px;
+}
+
+.sidebarTitle {
+  font-size: 13px;
+  color: rgb(187, 186, 186);
+}
+
+.sidebarList {
+  list-style: none;
+  padding: 5px;
+}
+
+.sidebarListItem {
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+}
+
+.sidebarListItem.active,
+.sidebarListItem:hover {
+  background-color: #2e3665;
+}
+
+.sidebarIcon {
+  margin-right: 5px;
+  font-size: 20px !important;
+}
+.comp_logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-left: 30px;
 }

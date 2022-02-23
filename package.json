@@ -1,5 +1,6 @@
 {
-  "name": "lamaadmin",
+  "name": "idealplus",
+  "homepage": "http://idealplus.co.ke/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
